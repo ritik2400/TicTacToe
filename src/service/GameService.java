@@ -12,23 +12,22 @@ public class GameService {
     private Game game;
     private Scanner sc;
     private GameStatus gameStatus;
-    GameService() {
+
+    public GameService() {
         sc = new Scanner(System.in);
     }
 
-    public GameStatus getGameStatus() {
-        return gameStatus;
-    }
-
     public void initGame() {
+        System.out.print("Enter the number of players: ");
         int totalPlayers = sc.nextInt();
         sc.nextLine();
+
         Player[] players = new Player[totalPlayers];
         PlayerBuilder playerBuilder = new PlayerBuilder();
         for(int i=0;i<totalPlayers;i++) {
-            System.out.println("Enter Player " + (i+1) + " name: ");
+            System.out.print("Enter Player " + (i+1) + " name: ");
             playerBuilder.name(sc.nextLine());
-            System.out.println("Enter Player " + (i+1) + " symbol: ");
+            System.out.print("Enter Player " + (i+1) + " symbol: ");
             playerBuilder.symbol(sc.nextLine().charAt(0));
             players[i] = playerBuilder.build();
         }
@@ -39,7 +38,9 @@ public class GameService {
     }
 
     public void startGame() {
+        System.out.println("Welcome to D TicTacToe!");
         gameStatus = GameStatus.START;
+
         initGame();
         gameStatus = GameStatus.RUNNING;
         int turn = 0;
@@ -72,5 +73,9 @@ public class GameService {
         }
         game.printBoard();
         gameStatus = GameStatus.END;
+    }
+
+    public GameStatus getGameStatus() {
+        return gameStatus;
     }
 }

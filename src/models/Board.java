@@ -17,9 +17,8 @@ public class Board {
         return this;
     }
 
-    public Board markCell(int x, int y, char symbol) {
+    public void markCell(int x, int y, char symbol) {
         this.cells[x][y] = symbol;
-        return this;
     }
 
     public char getCell(int x, int y) {
