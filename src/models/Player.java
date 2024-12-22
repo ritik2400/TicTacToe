@@ -24,9 +24,9 @@ public class Player {
     }
     @Override
     public String toString() {
-        StringBuilder output = new StringBuilder("Player {}");
+        StringBuilder output = new StringBuilder("Player {");
         output.append("name= '").append(name).append("'");
-        output.append(", symbol= '").append(symbol).append("'");
+        output.append(", symbol= '").append(symbol).append("'}");
         return output.toString();
     }
 
