@@ -8,12 +8,18 @@ public class Board {
         board = new char[3][3];
     }
 
-    public void initBoard() {
+    public Board initBoard() {
         for(int i=0;i<3;i++) {
             for(int j=0;j<3;j++) {
-                board[i][j] = '_';
+                board[i][j] = (char)('0' + (i + j));
             }
         }
+        return this;
+    }
+
+    public Board markCell(int x, int y, char symbol) {
+        this.board[x][y] = symbol;
+        return this;
     }
 
     @Override
