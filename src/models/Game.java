@@ -26,6 +26,10 @@ public class Game {
                 || (board.getCell(x,y)==board.getCell((x+1)%3, (y+2)%3) && board.getCell(x,y)==board.getCell((x+2)%3, (y+1)%3));
     }
 
+    public int getTotalPlayers() {
+        return totalPlayers;
+    }
+
     public Player getPlayer(int pos) {
         return players[pos];
     }
