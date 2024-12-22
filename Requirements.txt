@@ -1,0 +1,6 @@
+TicTacToe Game:
+
+1. 2 Player Game.
+2. Alternate turns to play.
+3. Player symbols: 'X'/'O'.
+4. Board map will be visible with 9 cells.
