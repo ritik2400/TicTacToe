@@ -20,8 +20,8 @@ public class Game {
     public boolean checkWinner(int x, int y) {
         return (board.getCell(x,y)==board.getCell((x+1)%3,y) && board.getCell(x,y)==board.getCell((x+2)%3,y))
                 || (board.getCell(x,y)==board.getCell(x, (y+1)%3) && board.getCell(x, y)==board.getCell(x,(y+2)%3))
-                || (board.getCell(x,y)==board.getCell((x+1)%3, (y+1)%3) && board.getCell(x,y)==board.getCell((x+2)%3,(y+2)%3))
-                || (board.getCell(x,y)==board.getCell((x+1)%3, (y+2)%3) && board.getCell(x,y)==board.getCell((x+2)%3, (y+1)%3));
+                || (board.getCell(0,0)==board.getCell(1, 1) && board.getCell(x,y)==board.getCell(2,2))
+                || (board.getCell(2,0)==board.getCell(1, 1) && board.getCell(x,y)==board.getCell(0, 2));
     }
 
     public int getTotalPlayers() {
