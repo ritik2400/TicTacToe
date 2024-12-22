@@ -1,15 +1,17 @@
 package models;
 
 public class Game {
-    private Board board;
-    private Player[] players;
-    private int totalPlayers;
+    private final Board board;
+    private final Player[] players;
+    private final int totalPlayers;
     private Player winner;
+    int marked;
 
     private Game(Board board, Player[] players, int totalPlayers) {
         this.board = board;
         this.players = players;
         this.totalPlayers = totalPlayers;
+        this.marked = 0;
     }
 
     public boolean markAndCheck(int x, int y, char mark) {
@@ -22,6 +24,10 @@ public class Game {
                 || (board.getCell(x,y)==board.getCell(x, (y+1)%3) && board.getCell(x, y)==board.getCell(x,(y+2)%3))
                 || (board.getCell(0,0)==board.getCell(1, 1) && board.getCell(x,y)==board.getCell(2,2))
                 || (board.getCell(2,0)==board.getCell(1, 1) && board.getCell(x,y)==board.getCell(0, 2));
+    }
+
+    public boolean isValidMove(int pos) {
+        return pos>=0 && pos<=8 && ((marked>>pos)&1)==0;
     }
 
     public int getTotalPlayers() {

@@ -49,7 +49,7 @@ public class GameService {
             Player player = game.getPlayer(turn%game.getTotalPlayers());
             System.out.print(player.getName()+"'s turn.\n Enter your position: ");
             int pos = sc.nextInt()-1;
-            if(pos>8 || pos<0) {
+            if(game.isValidMove(pos)) {
                 System.out.println("Invalid position. Try again.");
                 continue;
             }
