@@ -1,7 +1,5 @@
 package models;
 
-import enums.GameStatus;
-
 public class Game {
     private Board board;
     private Player[] players;
@@ -14,8 +12,8 @@ public class Game {
         this.totalPlayers = totalPlayers;
     }
 
-    public boolean markAndCheck(int x, int y, int player) {
-        this.board.markCell(x, y, players[player].getSymbol());
+    public boolean markAndCheck(int x, int y, char mark) {
+        this.board.markCell(x, y, mark);
         return checkWinner(x, y);
     }
 

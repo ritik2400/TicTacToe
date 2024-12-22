@@ -65,13 +65,13 @@ public class GameService {
             }
         }
 
+        game.printBoard();
         if(gameStatus == GameStatus.DRAW) {
             System.out.println("Game has ended in a DRAW. ");
         }
         if(gameStatus == GameStatus.WIN) {
-            System.out.println(game.getWinner().getSymbol() + " won the game.");
+            System.out.println(game.getWinner().getName() + " won the game.");
         }
-        game.printBoard();
         gameStatus = GameStatus.END;
     }
 
