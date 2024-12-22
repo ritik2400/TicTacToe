@@ -16,14 +16,16 @@ public class Game {
 
     public boolean markAndCheck(int x, int y, char mark) {
         this.board.markCell(x, y, mark);
+        marked = marked|(1<<(x*3+y));
         return checkWinner(x, y);
     }
 
     public boolean checkWinner(int x, int y) {
-        return (board.getCell(x,y)==board.getCell((x+1)%3,y) && board.getCell(x,y)==board.getCell((x+2)%3,y))
-                || (board.getCell(x,y)==board.getCell(x, (y+1)%3) && board.getCell(x, y)==board.getCell(x,(y+2)%3))
-                || (board.getCell(0,0)==board.getCell(1, 1) && board.getCell(x,y)==board.getCell(2,2))
-                || (board.getCell(2,0)==board.getCell(1, 1) && board.getCell(x,y)==board.getCell(0, 2));
+        boolean colMatch = (board.getCell(x,y)==board.getCell((x+1)%3,y) && board.getCell(x,y)==board.getCell((x+2)%3,y));
+        boolean rowMatch = (board.getCell(x,y)==board.getCell(x, (y+1)%3) && board.getCell(x, y)==board.getCell(x,(y+2)%3));
+        boolean diagMatch = (board.getCell(1,1)==board.getCell(0, 0) && board.getCell(1,1)==board.getCell(2,2));
+        boolean aDiagMatch = (board.getCell(1,1)==board.getCell(2, 0) && board.getCell(1,1)==board.getCell(0, 2));
+        return rowMatch || colMatch || diagMatch || aDiagMatch;
     }
 
     public boolean isValidMove(int pos) {
