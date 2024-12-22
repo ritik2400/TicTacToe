@@ -11,7 +11,7 @@ public class Board {
     public Board initBoard() {
         for(int i=0;i<3;i++) {
             for(int j=0;j<3;j++) {
-                cells[i][j] = (char)('0' + (i + j));
+                cells[i][j] = (char)('0' + (3*i + j+1));
             }
         }
         return this;
