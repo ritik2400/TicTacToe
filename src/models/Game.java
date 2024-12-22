@@ -1,9 +1,12 @@
 package models;
 
+import enums.GameStatus;
+
 public class Game {
     private Board board;
     private Player[] players;
     private int totalPlayers;
+    private Player winner;
 
     private Game(Board board, Player[] players, int totalPlayers) {
         this.board = board;
@@ -21,6 +24,22 @@ public class Game {
                 || (board.getCell(x,y)==board.getCell(x, (y+1)%3) && board.getCell(x, y)==board.getCell(x,(y+2)%3))
                 || (board.getCell(x,y)==board.getCell((x+1)%3, (y+1)%3) && board.getCell(x,y)==board.getCell((x+2)%3,(y+2)%3))
                 || (board.getCell(x,y)==board.getCell((x+1)%3, (y+2)%3) && board.getCell(x,y)==board.getCell((x+2)%3, (y+1)%3));
+    }
+
+    public Player getPlayer(int pos) {
+        return players[pos];
+    }
+
+    public Player getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Player winner) {
+        this.winner = winner;
+    }
+
+    public void printBoard() {
+        System.out.println(board);
     }
 
     public static class GameBuilder {
